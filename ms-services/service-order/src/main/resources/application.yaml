@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: service-order
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.31.200:30070
+        username: nacos
+        password: nacos
+
+server:
+  port: 8000
