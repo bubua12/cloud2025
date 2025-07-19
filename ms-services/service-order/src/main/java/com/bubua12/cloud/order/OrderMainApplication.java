@@ -1,4 +1,4 @@
-package com.bubua12.cloud.product;
+package com.bubua12.cloud.order;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
