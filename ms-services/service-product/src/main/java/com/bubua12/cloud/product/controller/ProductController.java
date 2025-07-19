@@ -1,6 +1,6 @@
 package com.bubua12.cloud.product.controller;
 
-import com.bubua12.cloud.product.entity.ProductVO;
+import com.bubua12.cloud.model.product.ProductVO;
 import com.bubua12.cloud.product.service.ProduceService;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.GetMapping;

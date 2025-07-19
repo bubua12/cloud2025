@@ -1,5 +1,6 @@
-package com.bubua12.cloud.order.entity;
+package com.bubua12.cloud.model.order;
 
+import com.bubua12.cloud.model.product.ProductVO;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -18,5 +19,5 @@ public class OrderVO {
     private Long userId;
     private String userNickName;
     private String userAddress;
-    private List<Object> productList;
+    private List<ProductVO> productList;
 }

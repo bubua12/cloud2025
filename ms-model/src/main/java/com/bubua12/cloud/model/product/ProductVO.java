@@ -1,4 +1,4 @@
-package com.bubua12.cloud.product.entity;
+package com.bubua12.cloud.model.product;
 
 import lombok.Data;
 

@@ -1,6 +1,6 @@
 package com.bubua12.cloud.order.controller;
 
-import com.bubua12.cloud.order.entity.OrderVO;
+import com.bubua12.cloud.model.order.OrderVO;
 import com.bubua12.cloud.order.service.OrderService;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.GetMapping;

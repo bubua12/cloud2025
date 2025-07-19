@@ -1,6 +1,7 @@
 package com.bubua12.cloud.product.service;
 
-import com.bubua12.cloud.product.entity.ProductVO;
+
+import com.bubua12.cloud.model.product.ProductVO;
 
 /**
  *

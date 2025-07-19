@@ -13,6 +13,7 @@
 
     <modules>
         <module>ms-services</module>
+        <module>ms-model</module>
     </modules>
 
     <properties>

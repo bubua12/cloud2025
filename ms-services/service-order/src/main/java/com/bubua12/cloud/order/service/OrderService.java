@@ -1,6 +1,7 @@
 package com.bubua12.cloud.order.service;
 
-import com.bubua12.cloud.order.entity.OrderVO;
+
+import com.bubua12.cloud.model.order.OrderVO;
 
 /**
  *

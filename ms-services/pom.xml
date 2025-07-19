@@ -42,6 +42,13 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
+
+        <!-- 公共模型层 -->
+        <dependency>
+            <groupId>com.bubua12.cloud</groupId>
+            <artifactId>ms-model</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
 </project>
