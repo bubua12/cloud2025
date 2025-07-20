@@ -36,7 +36,8 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public OrderVO createOrder(Long productId, Long userId) {
 //        ProductVO productVO = getProductByProductIdRPC(productId);
-        ProductVO productVO = getProductByProductIdRPCLB(productId);
+//        ProductVO productVO = getProductByProductIdRPCLB(productId);
+        ProductVO productVO = getProductByProductIdRPCAnnoLB(productId);
 
         OrderVO orderVO = new OrderVO();
 
@@ -74,6 +75,26 @@ public class OrderServiceImpl implements OrderService {
 
         // 远程调用 URL
         String url = "http://" + choose.getHost() + ":" + choose.getPort() + "/product/" + productId;
+        log.info("远程请求路径: {}", url);
+
+        // 2、给远程发送请求
+        ProductVO productVO = restTemplate.getForObject(url, ProductVO.class);
+        log.debug("远程响应结构体: {}", productVO);
+
+        return productVO;
+    }
+
+    /**
+     * 远程请求路径: <a href="http://192.168.31.74:9002/product/100">http://192.168.31.74:9002/product/100</a>
+     * <br/>
+     * 更新后的远程请求路径: <a href="http://service-product/product/100">http://service-product/product/100</a>
+     * <br/>
+     * 思考题：注册中心宕机了，远程调用还能成功吗？
+     *
+     */
+    private ProductVO getProductByProductIdRPCAnnoLB(Long productId) {
+        // 给服务名发送请求、会被动态替换
+        String url = "http://" + "service-product" + "/product/" + productId;
         log.info("远程请求路径: {}", url);
 
         // 2、给远程发送请求
