@@ -7,6 +7,7 @@ import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -29,10 +30,13 @@ public class OrderServiceImpl implements OrderService {
     @Resource
     private RestTemplate restTemplate;
 
+    @Resource
+    private LoadBalancerClient loadBalancerClient;
 
     @Override
     public OrderVO createOrder(Long productId, Long userId) {
-        ProductVO productVO = getProductByProductIdRPC(productId);
+//        ProductVO productVO = getProductByProductIdRPC(productId);
+        ProductVO productVO = getProductByProductIdRPCLB(productId);
 
         OrderVO orderVO = new OrderVO();
 
@@ -55,6 +59,21 @@ public class OrderServiceImpl implements OrderService {
         ServiceInstance instance = instances.getFirst();
         // 远程调用 URL
         String url = "http://" + instance.getHost() + ":" + instance.getPort() + "/product/" + productId;
+        log.info("远程请求路径: {}", url);
+
+        // 2、给远程发送请求
+        ProductVO productVO = restTemplate.getForObject(url, ProductVO.class);
+        log.debug("远程响应结构体: {}", productVO);
+
+        return productVO;
+    }
+
+    private ProductVO getProductByProductIdRPCLB(Long productId) {
+        // 负载均衡的获取服务实例、而不是获取第一个
+        ServiceInstance choose = loadBalancerClient.choose("service-product");
+
+        // 远程调用 URL
+        String url = "http://" + choose.getHost() + ":" + choose.getPort() + "/product/" + productId;
         log.info("远程请求路径: {}", url);
 
         // 2、给远程发送请求
