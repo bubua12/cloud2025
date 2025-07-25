@@ -1,13 +1,18 @@
 spring:
   config:
-    import: nacos:service-order.yaml
+    import:
+      - nacos:common.properties?group=order
+      - nacos:database.properties?group=order
   application:
     name: service-order
   cloud:
     nacos:
-      serve r-addr: 192.168.31.127:8848
+      config:
+        namespace: 1a66b752-f1f1-422a-8a33-b8d7327f9aa5
+      server-addr: 192.168.31.129:8848
       username: nacos
       password: nacos
+
 
 server:
   port: 8000
