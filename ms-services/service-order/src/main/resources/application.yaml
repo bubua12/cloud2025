@@ -1,12 +1,13 @@
 spring:
+  config:
+    import: nacos:service-order.yaml
   application:
     name: service-order
   cloud:
     nacos:
-      discovery:
-        server-addr: 192.168.31.127:8848
-        username: nacos
-        password: nacos
+      serve r-addr: 192.168.31.127:8848
+      username: nacos
+      password: nacos
 
 server:
   port: 8000
