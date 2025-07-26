@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
  * @author bubua12
  * @since 2025/7/26 15:37
  */
-@FeignClient(value = "service-product") // Feign客户端，发送远程请求的客户端
+@FeignClient(value = "service-product", fallback = ProductFeignClientFallback.class) // Feign客户端，发送远程请求的客户端
 public interface ProductFeignClient {
 
     /**
