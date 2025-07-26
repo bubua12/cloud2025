@@ -11,4 +11,6 @@ import com.bubua12.cloud.model.order.OrderVO;
  */
 public interface OrderService {
     OrderVO createOrder(Long productId, Long userId);
+
+    OrderVO createOrderFeign(Long productId, Long userId);
 }

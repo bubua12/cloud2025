@@ -7,6 +7,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 
 import java.util.concurrent.Executor;
@@ -18,6 +19,7 @@ import java.util.concurrent.Executors;
  * @author bubua12
  * @since 2025/7/16 23:52
  */
+@EnableFeignClients // 开启Feign远程调用功能
 @EnableDiscoveryClient
 @SpringBootApplication
 public class OrderMainApplication {

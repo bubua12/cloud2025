@@ -3,6 +3,7 @@ package com.bubua12.cloud.order.controller;
 import com.bubua12.cloud.model.order.OrderVO;
 import com.bubua12.cloud.order.service.OrderService;
 import jakarta.annotation.Resource;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RefreshScope // 激活配置属性的自动刷新功能
 @RestController
+@Slf4j
 public class OrderController {
 
     @Resource
@@ -31,11 +33,19 @@ public class OrderController {
     @GetMapping("/create")
     public OrderVO createOrder(@RequestParam("userId") Long userId,
                                @RequestParam("productId") Long productId) {
+        log.info("create order by userId:{}, productId:{}", userId, productId);
         return orderService.createOrder(productId, userId);
     }
 
     @GetMapping("/config")
     public String config() {
         return "order.timeout: " + orderTimeout + "\torder.auto-confirm: " + orderAutoConfirm;
+    }
+
+    @GetMapping("/create/v2")
+    public OrderVO createOrderFeign(@RequestParam("userId") Long userId,
+                               @RequestParam("productId") Long productId) {
+        log.info("create order feign");
+        return orderService.createOrderFeign(productId, userId);
     }
 }

@@ -2,6 +2,7 @@ package com.bubua12.cloud.order.service.impl;
 
 import com.bubua12.cloud.model.order.OrderVO;
 import com.bubua12.cloud.model.product.ProductVO;
+import com.bubua12.cloud.order.feign.ProductFeignClient;
 import com.bubua12.cloud.order.service.OrderService;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
@@ -33,6 +34,9 @@ public class OrderServiceImpl implements OrderService {
     @Resource
     private LoadBalancerClient loadBalancerClient;
 
+    @Resource
+    private ProductFeignClient productFeignClient;
+
     @Override
     public OrderVO createOrder(Long productId, Long userId) {
 //        ProductVO productVO = getProductByProductIdRPC(productId);
@@ -48,6 +52,22 @@ public class OrderServiceImpl implements OrderService {
         orderVO.setUserAddress("江宁区禄口街道123号");
         orderVO.setUserId(userId);
         orderVO.setProductList(List.of(productVO));
+
+        return orderVO;
+    }
+
+    @Override
+    public OrderVO createOrderFeign(Long productId, Long userId) {
+        ProductVO product = productFeignClient.getProductById(productId);
+        OrderVO orderVO = new OrderVO();
+
+        orderVO.setId(1L);
+        orderVO.setUserId(userId);
+        orderVO.setTotalAmount(product.getPrice().multiply(new BigDecimal(product.getQuantity())));
+        orderVO.setUserNickName("张利");
+        orderVO.setUserAddress("江宁区禄口街道123号");
+        orderVO.setUserId(userId);
+        orderVO.setProductList(List.of(product));
 
         return orderVO;
     }
