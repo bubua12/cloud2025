@@ -3,6 +3,7 @@ package com.bubua12.cloud.product.controller;
 import com.bubua12.cloud.model.product.ProductVO;
 import com.bubua12.cloud.product.service.ProduceService;
 import jakarta.annotation.Resource;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,9 +25,13 @@ public class ProductController {
     @Resource
     private ProduceService produceService;
 
+    /**
+     * fixme 这里UUID只生成一次？
+     */
     @GetMapping("/product/{id}")
-    public ProductVO getProduct(@PathVariable("id") Long productId) {
-        System.out.println("hello order, this is product controller");
+    public ProductVO getProduct(@PathVariable("id") Long productId,
+                                HttpServletRequest request) {
+        System.out.println("hello order, this is product controller, header: " + request.getHeader("X-Token"));
         log.info("server.port: {}", serverPort);
         return produceService.getProductById(productId);
     }

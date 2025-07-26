@@ -13,4 +13,6 @@ spring:
             connect-timeout: 3000
             read-timeout: 5000
             logger-level: full
-#            retryer: 可以选择默认的配置的全类名、或者容器里写一个重试器，会自动 lookup
+#           retryer: 可以选择默认的配置的全类名、或者容器里写一个重试器，会自动 lookup
+#           request-interceptors: 只对特定的客户端有效
+#             - com.bubua12...
