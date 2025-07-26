@@ -5,6 +5,7 @@ import com.bubua12.cloud.product.service.ProduceService;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.concurrent.TimeUnit;
 
 /**
  *
@@ -23,6 +24,8 @@ public class ProduceServiceImpl implements ProduceService {
         productVO.setProductName("Apple iPhone " + productId);
         productVO.setPrice(new BigDecimal(8999));
         productVO.setQuantity(2);
+
+        try { TimeUnit.SECONDS.sleep(100); } catch (InterruptedException e) { throw new RuntimeException(e); }
 
         return productVO;
     }

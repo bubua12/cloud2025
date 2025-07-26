@@ -1,0 +1,16 @@
+spring:
+  cloud:
+    openfeign:
+      client:
+        config:
+          # 对所有feign客户端配置
+          default:
+            connect-timeout: 1000
+            read-timeout: 2000
+            logger-level: full
+          # 对商品调用feign客户端的配置 ---> 有详细的使用详细配置，没有则使用默认配置
+          service-product:
+            connect-timeout: 3000
+            read-timeout: 5000
+            logger-level: full
+#            retryer: 可以选择默认的配置的全类名、或者容器里写一个重试器，会自动 lookup

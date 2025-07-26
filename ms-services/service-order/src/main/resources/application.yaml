@@ -1,4 +1,6 @@
 spring:
+  profiles:
+    include: feign
   config:
     import:
       - nacos:common.properties?group=order
@@ -16,3 +18,8 @@ spring:
 
 server:
   port: 8000
+
+# 开启feign包下的debug级别日志
+logging:
+  level:
+    com.bubua12.cloud.order.feign: debug
