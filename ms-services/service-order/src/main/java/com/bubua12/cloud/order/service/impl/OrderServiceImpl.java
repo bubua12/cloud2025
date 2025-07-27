@@ -1,5 +1,6 @@
 package com.bubua12.cloud.order.service.impl;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.bubua12.cloud.model.order.OrderVO;
 import com.bubua12.cloud.model.product.ProductVO;
 import com.bubua12.cloud.order.feign.ProductFeignClient;
@@ -56,6 +57,7 @@ public class OrderServiceImpl implements OrderService {
         return orderVO;
     }
 
+    @SentinelResource(value = "createOrder")
     @Override
     public OrderVO createOrderFeign(Long productId, Long userId) {
         ProductVO product = productFeignClient.getProductById(productId);

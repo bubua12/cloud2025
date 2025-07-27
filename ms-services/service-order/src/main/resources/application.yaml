@@ -1,6 +1,6 @@
 spring:
   profiles:
-    include: feign
+    include: feign,sentinel
   config:
     import:
       - nacos:common.properties?group=order
