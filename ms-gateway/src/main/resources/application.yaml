@@ -1,0 +1,17 @@
+spring:
+  profiles:
+    include: route
+  application:
+    name: ms-gateway
+  cloud:
+    nacos:
+      server-addr: 192.168.31.129:8848
+      username: nacos
+      password: nacos
+      discovery:
+        metadata:
+          env: prod
+          version: 1.1.2-prod
+
+server:
+  port: 80

@@ -1,0 +1,12 @@
+spring:
+  cloud:
+    gateway:
+      routes: # 从上到下依次匹配、但是还可以使用order配置优先级(数字越小，优先级越高)
+        - id: order-route
+          uri: lb://service-order
+          predicates:
+            - Path=/api/order/**
+        - id: product-route
+          uri: lb://service-product
+          predicates:
+            - Path=/api/product/**

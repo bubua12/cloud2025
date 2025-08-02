@@ -19,6 +19,6 @@ public interface ProductFeignClient {
      * 1、标注在 Controller上，是接收这样的请求
      * 2、标注在 FeignClient上，是发送这样的请求
      */
-    @GetMapping("/product/{id}")
+    @GetMapping("/api/product/product/{id}")
     ProductVO getProductById(@PathVariable("id") Long id);
 }
