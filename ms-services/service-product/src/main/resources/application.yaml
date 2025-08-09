@@ -14,3 +14,13 @@ spring:
 
 server:
   port: 9000
+
+# 开启feign包下的debug级别日志
+logging:
+  pattern:
+    level: ${spring.application.name},%X{traceId:-},%X{spanId:-}
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0 # 采样率100%

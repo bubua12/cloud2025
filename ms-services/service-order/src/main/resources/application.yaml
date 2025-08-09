@@ -23,3 +23,10 @@ server:
 logging:
   level:
     com.bubua12.cloud.order.feign: debug
+  pattern:
+    level: ${spring.application.name},%X{traceId:-},%X{spanId:-}
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0 # 采样率100%
