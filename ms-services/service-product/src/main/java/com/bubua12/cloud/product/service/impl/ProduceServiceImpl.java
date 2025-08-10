@@ -2,6 +2,8 @@ package com.bubua12.cloud.product.service.impl;
 
 import com.bubua12.cloud.model.product.ProductVO;
 import com.bubua12.cloud.product.service.ProduceService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -14,9 +16,11 @@ import java.math.BigDecimal;
  */
 @Service
 public class ProduceServiceImpl implements ProduceService {
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     @Override
     public ProductVO getProductById(Long productId) {
+        log.info("Product的Service Impl方法");
         ProductVO productVO = new ProductVO();
 
         productVO.setId(productId);

@@ -45,18 +45,25 @@
             <groupId>io.micrometer</groupId>
             <artifactId>micrometer-observation</artifactId>
         </dependency>
+
+        <!-- 添加 OpenTelemetry 相关依赖 -->
         <dependency>
             <groupId>io.micrometer</groupId>
             <artifactId>micrometer-tracing-bridge-otel</artifactId>
         </dependency>
         <dependency>
-            <groupId>io.zipkin.reporter2</groupId>
-            <artifactId>zipkin-reporter-brave</artifactId>
-            <version>2.16.3</version>
+            <groupId>io.opentelemetry</groupId>
+            <artifactId>opentelemetry-exporter-otlp</artifactId>
         </dependency>
+
         <dependency>
             <groupId>io.github.openfeign</groupId>
             <artifactId>feign-micrometer</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.opentelemetry</groupId>
+            <artifactId>opentelemetry-exporter-common</artifactId>
         </dependency>
     </dependencies>
 

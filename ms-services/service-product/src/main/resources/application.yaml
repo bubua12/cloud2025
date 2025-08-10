@@ -21,6 +21,12 @@ logging:
     level: ${spring.application.name},%X{traceId:-},%X{spanId:-}
 
 management:
+  otlp:
+    metrics:
+      export:
+        enabled: true
+    tracing:
+      endpoint: http://192.168.31.200:30159/v1/traces
   tracing:
     sampling:
       probability: 1.0 # 采样率100%

@@ -3,7 +3,8 @@ package com.bubua12.cloud.order.controller;
 import com.bubua12.cloud.model.order.OrderVO;
 import com.bubua12.cloud.order.service.OrderService;
 import jakarta.annotation.Resource;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,8 +21,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/order")
 @RefreshScope // 激活配置属性的自动刷新功能
 @RestController
-@Slf4j
 public class OrderController {
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     @Resource
     private OrderService orderService;
