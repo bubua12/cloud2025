@@ -29,7 +29,7 @@ logging:
 management:
   otlp:
     tracing:
-      endpoint: http://127.0.0.1:4318/v1/traces
+      endpoint: http://192.168.1.242:4318/v1/traces
   tracing:
     sampling:
       probability: 1.0 # 采样率100%
