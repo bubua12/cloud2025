@@ -1,6 +1,6 @@
 spring:
   profiles:
-    include: route
+    include: route # 包含路由配置文件
   application:
     name: ms-gateway
   cloud:
