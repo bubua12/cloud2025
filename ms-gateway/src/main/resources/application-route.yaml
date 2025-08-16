@@ -9,6 +9,7 @@ spring:
           filters:
             - RewritePath=/api/order/?(?<segment>.*), /$\{segment}
             - AddResponseHeader=X-Response, bubua12
+            - OnceToken=X-Response-Token, jwt
 
         - id: product-route
           uri: lb://service-product
