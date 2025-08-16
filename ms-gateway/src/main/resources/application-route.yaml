@@ -6,10 +6,15 @@ spring:
           uri: lb://service-order # 转给哪个服务，这里负载均衡到订单服务
           predicates: # 断言，又是一个list
             - Path=/api/order/** # 路径规则
+          filters:
+            - RewritePath=/api/order/?(?<segment>.*), /$\{segment}
+            - AddResponseHeader=X-Response, bubua12
+
         - id: product-route
           uri: lb://service-product
           predicates:
             - Path=/api/product/**
+
         - id: warehouse-route
           uri: lb://service-warehouse
           predicates:
@@ -17,6 +22,7 @@ spring:
               args:
                 patterns: /api/warehouse/**
                 matchTrailingSlash: true
+
         - id: bing-route
           uri: https://cn.bing.com/
           predicates: # 多个断言时，必须全部匹配才可以路由到
