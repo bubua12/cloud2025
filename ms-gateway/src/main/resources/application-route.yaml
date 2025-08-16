@@ -27,3 +27,7 @@ spring:
               args:
                 param: q
                 regexp: haha
+            - name: Vip
+              args: # 这里是条件，必须是如下的条件才行
+                param: user
+                value: wangbubu
