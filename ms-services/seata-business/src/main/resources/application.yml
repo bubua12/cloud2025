@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: seata-business
+  cloud:
+    nacos:
+      server-addr: 192.168.31.129:8848
+      username: nacos
+      password: nacos
+      config:
+        import-check:
+          enabled: false
+server:
+  port: 21000
+
