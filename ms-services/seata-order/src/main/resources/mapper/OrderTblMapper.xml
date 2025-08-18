@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.bubua12.cloud.orderd.mapper.OrderTblMapper">
+<mapper namespace="com.bubua12.cloud.order.mapper.OrderTblMapper">
 
     <resultMap id="BaseResultMap" type="com.bubua12.cloud.bean.OrderTbl">
             <id property="id" column="id" jdbcType="INTEGER"/>

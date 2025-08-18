@@ -1,4 +1,4 @@
-package com.bubua12.cloud.feign;
+package com.bubua12.cloud.order.feign;
 
 
 import org.springframework.cloud.openfeign.FeignClient;

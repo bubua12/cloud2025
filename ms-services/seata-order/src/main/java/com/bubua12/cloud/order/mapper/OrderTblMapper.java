@@ -1,6 +1,6 @@
-package com.bubua12.cloud.mapper;
+package com.bubua12.cloud.order.mapper;
 
-import com.bubua12.cloud.bean.OrderTbl;
+import com.bubua12.cloud.order.bean.OrderTbl;
 
 public interface OrderTblMapper {
 
