@@ -1,6 +1,6 @@
-package com.bubua12.cloud.service;
+package com.bubua12.cloud.order.service;
 
-import com.bubua12.cloud.bean.OrderTbl;
+import com.bubua12.cloud.order.bean.OrderTbl;
 
 public interface OrderService {
     /**

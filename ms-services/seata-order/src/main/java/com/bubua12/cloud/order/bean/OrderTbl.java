@@ -1,4 +1,4 @@
-package com.bubua12.cloud.bean;
+package com.bubua12.cloud.order.bean;
 
 import lombok.Getter;
 import lombok.Setter;

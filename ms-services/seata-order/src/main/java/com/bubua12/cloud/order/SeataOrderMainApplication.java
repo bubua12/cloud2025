@@ -1,4 +1,4 @@
-package com.bubua12.cloud;
+package com.bubua12.cloud.order;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;

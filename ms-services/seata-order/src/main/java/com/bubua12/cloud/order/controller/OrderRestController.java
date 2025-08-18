@@ -1,18 +1,19 @@
-package com.bubua12.cloud.controller;
+package com.bubua12.cloud.order.controller;
 
 
-import com.bubua12.cloud.bean.OrderTbl;
-import com.bubua12.cloud.service.OrderService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.bubua12.cloud.order.bean.OrderTbl;
+import com.bubua12.cloud.order.service.OrderService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
+
 @RestController
 public class OrderRestController {
 
-    @Autowired
-    OrderService orderService;
+    @Resource
+    private OrderService orderService;
 
     /**
      * 创建订单
