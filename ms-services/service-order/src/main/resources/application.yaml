@@ -11,7 +11,7 @@ spring:
     nacos:
       config:
         namespace: 1a66b752-f1f1-422a-8a33-b8d7327f9aa5
-      server-addr: 192.168.31.129:8848
+      server-addr: 192.168.1.242:8848
       username: nacos
       password: nacos
 
