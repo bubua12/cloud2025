@@ -42,6 +42,9 @@ public class OrderServiceImpl implements OrderService {
         // 4. 保存订单
         orderTblMapper.insert(orderTbl);
 
+        // Mock Exception
+        int a = 100 /0 ;
+
         return orderTbl;
     }
 
