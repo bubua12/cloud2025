@@ -6,6 +6,7 @@ import com.bubua12.cloud.order.mapper.OrderTblMapper;
 import com.bubua12.cloud.order.service.OrderService;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 
 @Service
@@ -17,6 +18,7 @@ public class OrderServiceImpl implements OrderService {
     @Resource
     private AccountFeignClient accountFeignClient;
 
+    @Transactional
     @Override
     public OrderTbl create(String userId, String commodityCode, int orderCount) {
         // 1. 计算订单价格
