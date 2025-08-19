@@ -4,6 +4,7 @@ import com.bubua12.cloud.business.feign.OrderFeignClient;
 import com.bubua12.cloud.business.feign.StorageFeignClient;
 import com.bubua12.cloud.business.service.BusinessService;
 import jakarta.annotation.Resource;
+import org.apache.seata.spring.annotation.GlobalTransactional;
 import org.springframework.stereotype.Service;
 
 
@@ -17,6 +18,7 @@ public class BusinessServiceImpl implements BusinessService {
     @Resource
     private OrderFeignClient orderFeignClient;
 
+    @GlobalTransactional
     @Override
     public void purchase(String userId, String commodityCode, int orderCount) {
         // 1. 扣减库存
