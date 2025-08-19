@@ -1,7 +1,7 @@
 package com.bubua12.cloud.business.controller;
 
 import com.bubua12.cloud.business.service.BusinessService;
-import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class PurchaseRestController {
 
-    @Autowired
-    BusinessService businessService;
+    @Resource
+    private BusinessService businessService;
 
     /**
-     * 购买
+     * 采购：哪个用户要买哪个商品要买几件
      */
     @GetMapping("/purchase")
     public String purchase(@RequestParam("userId") String userId,

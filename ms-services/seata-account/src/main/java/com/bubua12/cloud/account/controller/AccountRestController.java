@@ -1,16 +1,17 @@
 package com.bubua12.cloud.account.controller;
 
 import com.bubua12.cloud.account.service.AccountService;
-import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+
 @RestController
 public class AccountRestController {
 
-    @Autowired
-    AccountService accountService;
+    @Resource
+    private AccountService accountService;
 
     /**
      * 扣减账户余额
