@@ -4,26 +4,26 @@ import com.bubua12.cloud.order.bean.OrderTbl;
 import com.bubua12.cloud.order.feign.AccountFeignClient;
 import com.bubua12.cloud.order.mapper.OrderTblMapper;
 import com.bubua12.cloud.order.service.OrderService;
-import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+
 
 @Service
 public class OrderServiceImpl implements OrderService {
 
-    @Autowired
-    OrderTblMapper orderTblMapper;
+    @Resource
+    private OrderTblMapper orderTblMapper;
 
-    @Autowired
-    AccountFeignClient accountFeignClient;
+    @Resource
+    private AccountFeignClient accountFeignClient;
 
     @Override
-    @Transactional
     public OrderTbl create(String userId, String commodityCode, int orderCount) {
         // 1. 计算订单价格
-        int orderMoney = calculate(commodityCode, orderCount);
+        int orderMoney = calculate(orderCount);
         // 2. 扣减账户余额
-        accountFeignClient.debit(userId, orderMoney);
+        // fixme
+
         // 3. 保存订单
         OrderTbl orderTbl = new OrderTbl();
         orderTbl.setUserId(userId);
@@ -34,14 +34,11 @@ public class OrderServiceImpl implements OrderService {
         // 4. 保存订单
         orderTblMapper.insert(orderTbl);
 
-        // 模拟异常
-        int i = 10 / 0;
-
         return orderTbl;
     }
 
-    // 计算价格
-    private int calculate(String commodityCode, int orderCount) {
+    // 计算价格 这里只是模拟，假设一个商品9元钱
+    private int calculate(int orderCount) {
         return 9 * orderCount;
     }
 }

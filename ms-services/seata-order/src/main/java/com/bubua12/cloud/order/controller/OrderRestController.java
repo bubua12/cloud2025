@@ -3,11 +3,11 @@ package com.bubua12.cloud.order.controller;
 
 import com.bubua12.cloud.order.bean.OrderTbl;
 import com.bubua12.cloud.order.service.OrderService;
+import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.Resource;
 
 @RestController
 public class OrderRestController {
@@ -17,6 +17,11 @@ public class OrderRestController {
 
     /**
      * 创建订单
+     *
+     * @param userId 用户ID
+     * @param commodityCode 商品编码
+     * @param orderCount 购买数量
+     * @return 订单ID
      */
     @GetMapping("/create")
     public String create(@RequestParam("userId") String userId,

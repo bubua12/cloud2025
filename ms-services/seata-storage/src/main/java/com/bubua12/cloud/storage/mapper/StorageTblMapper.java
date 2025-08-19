@@ -1,6 +1,7 @@
 package com.bubua12.cloud.storage.mapper;
 
 import com.bubua12.cloud.storage.bean.StorageTbl;
+import org.apache.ibatis.annotations.Param;
 
 public interface StorageTblMapper {
 
@@ -16,5 +17,6 @@ public interface StorageTblMapper {
 
     int updateByPrimaryKey(StorageTbl record);
 
-    void deduct(String commodityCode, int count);
+    void deduct(@Param("commodityCode") String commodityCode,
+                @Param("count") int count);
 }
