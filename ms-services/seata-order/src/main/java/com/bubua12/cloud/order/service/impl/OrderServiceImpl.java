@@ -5,12 +5,15 @@ import com.bubua12.cloud.order.feign.AccountFeignClient;
 import com.bubua12.cloud.order.mapper.OrderTblMapper;
 import com.bubua12.cloud.order.service.OrderService;
 import jakarta.annotation.Resource;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
 @Service
 public class OrderServiceImpl implements OrderService {
+    private static final Logger log = LoggerFactory.getLogger(OrderServiceImpl.class);
 
     @Resource
     private OrderTblMapper orderTblMapper;
@@ -23,8 +26,11 @@ public class OrderServiceImpl implements OrderService {
     public OrderTbl create(String userId, String commodityCode, int orderCount) {
         // 1. 计算订单价格
         int orderMoney = calculate(orderCount);
+
+        log.info("spend money: {}", orderMoney);
+
         // 2. 扣减账户余额
-        // fixme
+        accountFeignClient.debit(userId, orderMoney);
 
         // 3. 保存订单
         OrderTbl orderTbl = new OrderTbl();
