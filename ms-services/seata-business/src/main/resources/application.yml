@@ -12,3 +12,13 @@ spring:
 server:
   port: 21000
 
+management:
+  otlp:
+    metrics:
+      export:
+        enabled: true
+    tracing:
+      endpoint: http://192.168.1.242:4318/v1/traces
+  tracing:
+    sampling:
+      probability: 1.0 # 采样率100%

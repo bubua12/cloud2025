@@ -43,7 +43,7 @@ public class OrderServiceImpl implements OrderService {
         orderTblMapper.insert(orderTbl);
 
         // Mock Exception
-        int a = 100 /0 ;
+//        int a = 100 /0 ;
 
         return orderTbl;
     }

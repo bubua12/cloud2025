@@ -24,6 +24,13 @@ spring:
                 patterns: /api/warehouse/**
                 matchTrailingSlash: true
 
+        - id: seata-route
+          uri: lb://seata-business
+          predicates:
+            - Path=/api/business/**
+          filters:
+            - RewritePath=/api/business/?(?<segment>.*), /$\{segment}
+
         - id: bing-route
           uri: https://cn.bing.com/
           predicates: # 多个断言时，必须全部匹配才可以路由到

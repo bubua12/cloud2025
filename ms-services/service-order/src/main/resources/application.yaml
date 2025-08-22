@@ -17,9 +17,20 @@ spring:
 
 
 server:
-  port: 8000
+  port: 8024
 
 # 开启feign包下的debug级别日志
 logging:
   level:
     com.bubua12.cloud.order.feign: debug
+
+management:
+  otlp:
+    metrics:
+      export:
+        enabled: true
+    tracing:
+      endpoint: http://192.168.1.242:4318/v1/traces
+  tracing:
+    sampling:
+      probability: 1.0 # 采样率100%
