@@ -1,11 +1,12 @@
+# 启用所有观测功能
 spring:
   application:
     name: seata-account
   datasource:
-    url: jdbc:mysql://192.168.1.242:3306/account_db?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    url: jdbc:otel:mysql://192.168.1.242:3306/account_db?useUnicode=true&characterEncoding=utf-8&useSSL=false
     username: root
     password: bubua12
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    driver-class-name: io.opentelemetry.instrumentation.jdbc.OpenTelemetryDriver
   cloud:
     nacos:
       server-addr: 192.168.1.242:8848
@@ -19,10 +20,15 @@ server:
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 开启MyBatis SQL日志
 #seata:
 #  data-source-proxy-mode: XA
 
 management:
+  observations:
+    key-values:
+      application: ${spring.application.name}
   otlp:
     metrics:
       export:
@@ -32,3 +38,22 @@ management:
   tracing:
     sampling:
       probability: 1.0 # 采样率100%
+  endpoint:
+    web:
+      exposure:
+        include: "*"
+  # 这个非常关键！
+  zipkin:
+    tracing:
+      endpoint: http://192.168.1.242:4318/v1/traces
+  # 启用所有观测功能
+  metrics:
+    distribution:
+      percentiles-histogram:
+        http.server.requests: true
+        jdbc.connections: true
+
+
+logging:
+  level:
+    com.bubua12.cloud.account.mapper: DEBUG
