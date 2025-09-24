@@ -16,6 +16,11 @@ spring:
       password: nacos
 
 
+otel:
+  propagators:
+    - tracecontext
+    - baggage
+
 server:
   port: 8024
 
@@ -23,14 +28,5 @@ server:
 logging:
   level:
     com.bubua12.cloud.order.feign: debug
-
-management:
-  otlp:
-    metrics:
-      export:
-        enabled: true
-    tracing:
-      endpoint: http://192.168.1.242:4318/v1/traces
-  tracing:
-    sampling:
-      probability: 1.0 # 采样率100%
+    org.springframework.cloud.openfeign: debug
+    feign.Logger: debug

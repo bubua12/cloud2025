@@ -18,7 +18,8 @@
     </modules>
 
     <properties>
-        <otel.version>1.46.0</otel.version>
+        <otel.instrumentation.version>2.12.0</otel.instrumentation.version>
+
         <spring.boot.version>3.3.4</spring.boot.version>
         <spring.cloud.version>2023.0.3</spring.cloud.version>
         <spring.cloud.alibaba.version>2023.0.3.2</spring.cloud.alibaba.version>
@@ -30,11 +31,10 @@
 
     <dependencyManagement>
         <dependencies>
-            <!-- OpenTelemetry BOM，保证所有 OTel 依赖版本一致 -->
             <dependency>
-                <groupId>io.opentelemetry</groupId>
-                <artifactId>opentelemetry-bom</artifactId>
-                <version>${otel.version}</version>
+                <groupId>io.opentelemetry.instrumentation</groupId>
+                <artifactId>opentelemetry-instrumentation-bom</artifactId>
+                <version>${otel.instrumentation.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -73,63 +73,19 @@
         </dependency>
 
         <dependency>
-            <groupId>io.micrometer</groupId>
-            <artifactId>micrometer-observation</artifactId>
-        </dependency>
-
-        <!-- 添加 OpenTelemetry 相关依赖 -->
-        <dependency>
-            <groupId>io.micrometer</groupId>
-            <artifactId>micrometer-tracing-bridge-otel</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>io.opentelemetry</groupId>
-            <artifactId>opentelemetry-exporter-otlp</artifactId>
-        </dependency>
-
-        <!-- Micrometer tracing 核心依赖 -->
-        <dependency>
-            <groupId>io.micrometer</groupId>
-            <artifactId>micrometer-tracing</artifactId>
-        </dependency>
-
-        <!-- JDBC 观测支持 -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-jdbc</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>io.github.openfeign</groupId>
-            <artifactId>feign-micrometer</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>io.opentelemetry</groupId>
-            <artifactId>opentelemetry-exporter-common</artifactId>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/io.opentelemetry.instrumentation/opentelemetry-jdbc -->
-        <dependency>
             <groupId>io.opentelemetry.instrumentation</groupId>
-            <artifactId>opentelemetry-jdbc</artifactId>
-            <version>1.33.6-alpha</version>
+            <artifactId>opentelemetry-spring-boot-starter</artifactId>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/io.opentelemetry.instrumentation/opentelemetry-instrumentation-api -->
-        <dependency>
-            <groupId>io.opentelemetry.instrumentation</groupId>
-            <artifactId>opentelemetry-instrumentation-api</artifactId>
-            <version>1.33.6</version>
-        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.opentelemetry.instrumentation/opentelemetry-spring-integration-4.1 -->
+<!--        <dependency>-->
+<!--            <groupId>io.opentelemetry.instrumentation</groupId>-->
+<!--            <artifactId>opentelemetry-spring-integration-4.1</artifactId>-->
+<!--            <version>2.13.2-alpha</version>-->
+<!--            <scope>runtime</scope>-->
+<!--        </dependency>-->
 
-        <!-- https://mvnrepository.com/artifact/io.opentelemetry/opentelemetry-api -->
-        <dependency>
-            <groupId>io.opentelemetry</groupId>
-            <artifactId>opentelemetry-api</artifactId>
-            <version>1.46.0</version>
-        </dependency>
+
     </dependencies>
 
 
