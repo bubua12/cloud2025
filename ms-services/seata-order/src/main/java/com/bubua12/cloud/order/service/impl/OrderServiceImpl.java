@@ -24,13 +24,16 @@ public class OrderServiceImpl implements OrderService {
     @Transactional
     @Override
     public OrderTbl create(String userId, String commodityCode, int orderCount) {
+        log.info("开始创建订单 - userId: {}, commodityCode: {}, orderCount: {}", userId, commodityCode, orderCount);
+        
         // 1. 计算订单价格
         int orderMoney = calculate(orderCount);
-
-        log.info("spend money: {}", orderMoney);
+        log.info("计算订单金额: {}", orderMoney);
 
         // 2. 扣减账户余额
+        log.info("调用账户服务扣减余额");
         accountFeignClient.debit(userId, orderMoney);
+        log.info("账户服务调用完成");
 
         // 3. 保存订单
         OrderTbl orderTbl = new OrderTbl();
@@ -40,7 +43,9 @@ public class OrderServiceImpl implements OrderService {
         orderTbl.setMoney(orderMoney);
 
         // 4. 保存订单
+        log.info("保存订单到数据库");
         orderTblMapper.insert(orderTbl);
+        log.info("订单创建完成 - orderId: {}", orderTbl.getId());
 
         // Mock Exception
 //        int a = 100 /0 ;

@@ -19,6 +19,7 @@
 
     <properties>
         <otel.instrumentation.version>2.12.0</otel.instrumentation.version>
+        <otel.version>1.46.0</otel.version>
 
         <spring.boot.version>3.3.4</spring.boot.version>
         <spring.cloud.version>2023.0.3</spring.cloud.version>
@@ -31,6 +32,15 @@
 
     <dependencyManagement>
         <dependencies>
+            <!-- OpenTelemetry BOM - 确保版本一致性 -->
+            <dependency>
+                <groupId>io.opentelemetry</groupId>
+                <artifactId>opentelemetry-bom</artifactId>
+                <version>${otel.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            
             <dependency>
                 <groupId>io.opentelemetry.instrumentation</groupId>
                 <artifactId>opentelemetry-instrumentation-bom</artifactId>
@@ -75,6 +85,36 @@
         <dependency>
             <groupId>io.opentelemetry.instrumentation</groupId>
             <artifactId>opentelemetry-spring-boot-starter</artifactId>
+        </dependency>
+        
+        <!-- Micrometer Tracing - Spring Boot 3.x 链路追踪核心 -->
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-tracing</artifactId>
+        </dependency>
+        
+        <!-- OpenTelemetry Micrometer 桥接 -->
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-tracing-bridge-otel</artifactId>
+        </dependency>
+        
+        <!-- OpenTelemetry OTLP 导出器 -->
+        <dependency>
+            <groupId>io.opentelemetry</groupId>
+            <artifactId>opentelemetry-exporter-otlp</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-micrometer</artifactId>
+        </dependency>
+
+        <!-- OpenTelemetry Semantic Conventions - 修复 ClassNotFoundException -->
+        <dependency>
+            <groupId>io.opentelemetry.semconv</groupId>
+            <artifactId>opentelemetry-semconv</artifactId>
+            <version>1.26.0-alpha</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/io.opentelemetry.instrumentation/opentelemetry-spring-integration-4.1 -->
