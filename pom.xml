@@ -92,13 +92,13 @@
             <groupId>io.micrometer</groupId>
             <artifactId>micrometer-tracing</artifactId>
         </dependency>
-        
+
         <!-- OpenTelemetry Micrometer 桥接 -->
         <dependency>
             <groupId>io.micrometer</groupId>
             <artifactId>micrometer-tracing-bridge-otel</artifactId>
         </dependency>
-        
+
         <!-- OpenTelemetry OTLP 导出器 -->
         <dependency>
             <groupId>io.opentelemetry</groupId>
@@ -116,16 +116,6 @@
             <artifactId>opentelemetry-semconv</artifactId>
             <version>1.26.0-alpha</version>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/io.opentelemetry.instrumentation/opentelemetry-spring-integration-4.1 -->
-<!--        <dependency>-->
-<!--            <groupId>io.opentelemetry.instrumentation</groupId>-->
-<!--            <artifactId>opentelemetry-spring-integration-4.1</artifactId>-->
-<!--            <version>2.13.2-alpha</version>-->
-<!--            <scope>runtime</scope>-->
-<!--        </dependency>-->
-
-
     </dependencies>
 
 
