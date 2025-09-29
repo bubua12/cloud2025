@@ -24,12 +24,13 @@ logging:
   level:
     com.bubua12.cloud.order.feign: debug
   pattern:
-    level: ${spring.application.name},%X{traceId:-},%X{spanId:-}
+    level: trace_id=%mdc{trace_id} span_id=%mdc{span_id} %5p
+#    level: ${spring.application.name},%X{traceId:-},%X{spanId:-}
 
-management:
-  otlp:
-    tracing:
-      endpoint: http://192.168.1.242:4318/v1/traces
-  tracing:
-    sampling:
-      probability: 1.0 # 采样率100%
+#management:
+#  otlp:
+#    tracing:
+#      endpoint: http://192.168.1.242:4318/v1/traces
+#  tracing:
+#    sampling:
+#      probability: 1.0 # 采样率100%
