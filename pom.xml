@@ -32,23 +32,6 @@
 
     <dependencyManagement>
         <dependencies>
-            <!-- OpenTelemetry BOM - 确保版本一致性 -->
-            <dependency>
-                <groupId>io.opentelemetry</groupId>
-                <artifactId>opentelemetry-bom</artifactId>
-                <version>${otel.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            
-            <dependency>
-                <groupId>io.opentelemetry.instrumentation</groupId>
-                <artifactId>opentelemetry-instrumentation-bom</artifactId>
-                <version>${otel.instrumentation.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
             <!-- SpringBoot -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
@@ -82,11 +65,6 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>io.opentelemetry.instrumentation</groupId>
-            <artifactId>opentelemetry-spring-boot-starter</artifactId>
-        </dependency>
-        
         <!-- Micrometer Tracing - Spring Boot 3.x 链路追踪核心 -->
         <dependency>
             <groupId>io.micrometer</groupId>
@@ -110,11 +88,15 @@
             <artifactId>feign-micrometer</artifactId>
         </dependency>
 
-        <!-- OpenTelemetry Semantic Conventions - 修复 ClassNotFoundException -->
         <dependency>
-            <groupId>io.opentelemetry.semconv</groupId>
-            <artifactId>opentelemetry-semconv</artifactId>
-            <version>1.26.0-alpha</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jdbc</artifactId>
+        </dependency>
+
+        <!-- AOP支持 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
     </dependencies>
 

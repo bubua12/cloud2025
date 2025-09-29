@@ -21,24 +21,13 @@ management:
     tracing:
       endpoint: http://192.168.1.242:4318/v1/traces
   tracing:
+    enabled: true
     sampling:
       probability: 1.0 # 采样率100%
   endpoints:
     web:
       exposure:
         include: health,info,metrics,tracing
-
-# OpenTelemetry 链路传播配置 - 关键配置
-otel:
-  propagators:
-    - tracecontext
-    - baggage
-  service:
-    name: ms-gateway
-  resource:
-    attributes:
-      service.name: ms-gateway
-      service.version: 1.0.0
 
 # 开启链路追踪日志 - 修复日志中traceId显示问题
 logging:
