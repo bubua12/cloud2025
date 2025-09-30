@@ -65,19 +65,19 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
-        <!-- Micrometer Tracing 官方链路追踪抽象层，提供统一的API-->
+        <!-- 核心API门面：官方链路追踪抽象层，提供统一的API-->
         <dependency>
             <groupId>io.micrometer</groupId>
             <artifactId>micrometer-tracing</artifactId>
         </dependency>
 
-        <!-- 将Micrometer的追踪API桥接到OpenTelemetry实现 -->
+        <!-- 选择了 OpenTelemetry 作为具体的追踪实现、该桥接负责 OTel Span 对象的创建、管理和生命周期控制 -->
         <dependency>
             <groupId>io.micrometer</groupId>
             <artifactId>micrometer-tracing-bridge-otel</artifactId>
         </dependency>
 
-        <!-- OpenTelemetry OTLP 导出器  将trace数据导出到支持OTLP协议的后端（如Jaeger、Zipkin等）-->
+        <!-- 使用 OpenTelemetry Protocol (OTLP) 将完成的 Span 数据导出到后端收集器 -->
         <dependency>
             <groupId>io.opentelemetry</groupId>
             <artifactId>opentelemetry-exporter-otlp</artifactId>
