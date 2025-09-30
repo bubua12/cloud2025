@@ -31,9 +31,9 @@ management:
 
 # 开启链路追踪日志 - 修复日志中traceId显示问题
 logging:
-  level:
-    org.springframework.cloud.gateway: DEBUG
-    io.micrometer.tracing: DEBUG
-    io.opentelemetry: DEBUG
+#  level:
+#    org.springframework.cloud.gateway: DEBUG
+#    io.micrometer.tracing: DEBUG
+#    io.opentelemetry: DEBUG
   pattern:
     level: '%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]'

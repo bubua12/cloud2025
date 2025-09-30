@@ -32,3 +32,5 @@ logging:
     io.opentelemetry: DEBUG
   pattern:
     level: '%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]'
+
+debug: true

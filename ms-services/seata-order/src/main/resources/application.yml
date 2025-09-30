@@ -122,3 +122,5 @@ logging:
     level: '%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]'
     # 增加更详细的日志信息
     console: '%d{yyyy-MM-dd HH:mm:ss.SSS} %5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}] %logger{36} - %msg%n'
+
+debug: true

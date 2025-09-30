@@ -89,3 +89,6 @@ logging:
   pattern:
     level: '%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]'
     console: '%d{yyyy-MM-dd HH:mm:ss.SSS} %5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}] %logger{36} - %msg%n'
+
+
+debug: true

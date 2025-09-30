@@ -51,23 +51,6 @@ management:
       exposure:
         include: health,info,metrics,tracing
 
-# OpenTelemetry 自动仪表配置
-otel:
-  instrumentation:
-    jdbc:
-      enabled: true
-    mybatis:
-      enabled: true
-  exporter:
-    otlp:
-      endpoint: http://192.168.1.242:4318
-  resource:
-    attributes:
-      service.name: seata-storage
-      service.version: 1.0.0
-  traces:
-    exporter: otlp
-
 # 开启链路追踪日志 - 修复日志中traceId显示问题
 logging:
   level:
@@ -81,3 +64,5 @@ logging:
     com.bubua12.cloud.storage.mapper: DEBUG
   pattern:
     level: '%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]'
+
+debug: true
