@@ -40,8 +40,8 @@ public class RTGlobalFilter implements GlobalFilter, Ordered {
                 // ========================================== 以下是后置逻辑
                 .doFinally((result) -> {
                             long endTime = System.currentTimeMillis();
-                            log.info("请求 {} 结束， tarceId: {}, 时间：{}，耗时: {} ms", Objects.requireNonNull(tracer.currentSpan()).context().traceId(),
-                                    request.getURI(), LocalDateTime.now(), endTime - startTime);
+                            log.info("请求 {} 结束， traceId: {}, 时间：{}，耗时: {} ms", request.getURI(),
+                                    Objects.requireNonNull(tracer.currentSpan()).context().traceId(), LocalDateTime.now(), endTime - startTime);
                         }
                 );
     }
