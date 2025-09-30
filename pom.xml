@@ -18,9 +18,6 @@
     </modules>
 
     <properties>
-        <otel.instrumentation.version>2.12.0</otel.instrumentation.version>
-        <otel.version>1.46.0</otel.version>
-
         <spring.boot.version>3.3.4</spring.boot.version>
         <spring.cloud.version>2023.0.3</spring.cloud.version>
         <spring.cloud.alibaba.version>2023.0.3.2</spring.cloud.alibaba.version>
@@ -32,6 +29,14 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>io.opentelemetry.instrumentation</groupId>
+                <artifactId>opentelemetry-instrumentation-bom</artifactId>
+                <version>2.20.1</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
             <!-- SpringBoot -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
@@ -65,25 +70,11 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
-        <!-- Micrometer Tracing 官方链路追踪抽象层，提供统一的API-->
         <dependency>
-            <groupId>io.micrometer</groupId>
-            <artifactId>micrometer-tracing</artifactId>
+            <groupId>io.opentelemetry.instrumentation</groupId>
+            <artifactId>opentelemetry-spring-boot-starter</artifactId>
         </dependency>
 
-        <!-- 将Micrometer的追踪API桥接到OpenTelemetry实现 -->
-        <dependency>
-            <groupId>io.micrometer</groupId>
-            <artifactId>micrometer-tracing-bridge-otel</artifactId>
-        </dependency>
-
-        <!-- OpenTelemetry OTLP 导出器  将trace数据导出到支持OTLP协议的后端（如Jaeger、Zipkin等）-->
-        <dependency>
-            <groupId>io.opentelemetry</groupId>
-            <artifactId>opentelemetry-exporter-otlp</artifactId>
-        </dependency>
-
-        <!-- 为Feign客户端提供自动的链路追踪支持 -->
         <dependency>
             <groupId>io.github.openfeign</groupId>
             <artifactId>feign-micrometer</artifactId>
@@ -92,12 +83,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jdbc</artifactId>
-        </dependency>
-
-        <!-- fixme AOP支持 支持@Observed注解和自定义切面追踪 -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
     </dependencies>
 

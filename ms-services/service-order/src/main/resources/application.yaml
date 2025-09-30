@@ -24,9 +24,6 @@ otel:
 server:
   port: 8024
 
-# 开启feign包下的debug级别日志
 logging:
-  level:
-    com.bubua12.cloud.order.feign: debug
-    org.springframework.cloud.openfeign: debug
-    feign.Logger: debug
+  pattern:
+    console: '%d{yyyy-MM-dd HH:mm:ss.SSS} %5p [${spring.application.name:},%X{trace_id:-},%X{span_id:-}] %logger{36} - %msg%n'

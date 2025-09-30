@@ -12,25 +12,21 @@ spring:
 server:
   port: 21000
 
-management:
-  otlp:
-    tracing:
-      endpoint: http://192.168.1.242:4318/v1/traces
-  tracing:
-    enabled: true
-    sampling:
-      probability: 1.0 # 采样率100%
-  endpoints:
-    web:
-      exposure:
-        include: health,info,metrics,tracing
-# 开启链路追踪日志 - 修复日志中traceId显示问题
-logging:
-  level:
-    org.springframework.cloud.openfeign: DEBUG
-    io.micrometer.tracing: DEBUG
-    io.opentelemetry: DEBUG
-  pattern:
-    level: '%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]'
+otel:
+  service:
+    name: otel-${spring.application.name}
+  resource:
+    attributes:
+      deployment:
+        environment: prod
+      service:
+        namespace: ms.microservices
+  exporter:
+    otlp:
+      traces:
+        endpoint: http://192.168.1.242:4318/v1/traces
+      protocol: http/protobuf
 
-debug: true
+logging:
+  pattern:
+    console: '%d{yyyy-MM-dd HH:mm:ss.SSS} %5p [${spring.application.name:},%X{trace_id:-},%X{span_id:-}] %logger{36} - %msg%n'
