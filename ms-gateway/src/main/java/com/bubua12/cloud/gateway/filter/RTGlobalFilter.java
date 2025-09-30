@@ -4,7 +4,6 @@ import io.micrometer.tracing.Tracer;
 import jakarta.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.slf4j.MDC;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
@@ -40,8 +39,16 @@ public class RTGlobalFilter implements GlobalFilter, Ordered {
                 // ========================================== 以下是后置逻辑
                 .doFinally((result) -> {
                             long endTime = System.currentTimeMillis();
-                            log.info("请求 {} 结束， traceId: {}, 时间：{}，耗时: {} ms", request.getURI(),
-                                    Objects.requireNonNull(tracer.currentSpan()).context().traceId(), LocalDateTime.now(), endTime - startTime);
+
+                            String duration = endTime - startTime + " ms";
+                            String traceId = Objects.requireNonNull(tracer.currentSpan()).context().traceId();
+
+                            exchange.getResponse().getHeaders()
+                                    .add("duration", duration);
+                            exchange.getResponse().getHeaders()
+                                    .add("traceId", traceId);
+
+                            log.info("请求 {} 结束， traceId: {}, 时间：{}，耗时: {} ms", request.getURI(), traceId, LocalDateTime.now(), duration);
                         }
                 );
     }
