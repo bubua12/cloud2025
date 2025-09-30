@@ -14,18 +14,20 @@ server:
 
 otel:
   service:
-    name: otel-${spring.application.name}
+    name: bubua12-${spring.application.name}
+  propagators: tracecontext,baggage
   resource:
     attributes:
       deployment:
         environment: prod
       service:
         namespace: ms.microservices
-  exporter:
-    otlp:
-      traces:
-        endpoint: http://192.168.1.242:4318/v1/traces
-      protocol: http/protobuf
+
+management:
+  tracing:
+    enabled: true
+    propagation:
+      type: W3C
 
 logging:
   pattern:

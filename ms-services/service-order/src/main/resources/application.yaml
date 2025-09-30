@@ -17,9 +17,21 @@ spring:
 
 
 otel:
-  propagators:
-    - tracecontext
-    - baggage
+  service:
+    name: bubua12-${spring.application.name}
+  resource:
+    attributes:
+      deployment:
+        environment: prod
+      service:
+        namespace: ms.microservices
+  propagators: tracecontext,baggage
+
+management:
+  tracing:
+    enabled: true
+    propagation:
+      type: W3C
 
 server:
   port: 8024
