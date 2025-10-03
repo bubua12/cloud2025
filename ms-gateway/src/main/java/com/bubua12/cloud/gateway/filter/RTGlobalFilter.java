@@ -45,6 +45,8 @@ public class RTGlobalFilter implements GlobalFilter, Ordered {
 
                             exchange.getResponse().getHeaders()
                                     .add("duration", duration);
+
+                            // fixme: 请求失败，不会执行下面的逻辑，找一个不论成功还是失败，都返回traceId的方法 ===> response + 返回字段
                             exchange.getResponse().getHeaders()
                                     .add("traceId", traceId);
 
