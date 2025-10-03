@@ -5,13 +5,13 @@ spring:
     name: ms-gateway
   cloud:
     nacos:
-      server-addr: 192.168.1.242:8848
-      username: nacos
-      password: nacos
+      server-addr: ${NACOS_URL:http://127.0.0.1:8848}
+      username: ${NACOS_USERNAME:nacos}
+      password: ${NACOS_PASSWORD:nacos}
       discovery:
         metadata:
-          env: prod
-          version: 1.1.2-prod
+          env: ${ENV:dev}
+          version: 1.1.2-${ENV:dev}
 
 server:
   port: 3333

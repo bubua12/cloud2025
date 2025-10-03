@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  app:
+    image: my-app:latest  # 使用刚才构建的镜像
+    container_name: container_name
+    environment:
+      - ENV=prod
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://127.0.0.1:4318
+      - NACOS_DISCOVERY_NAMESPACE=""
+      - NACOS_CONFIG_NAMESPACE=""
+      - NACOS_URL=127.0.0.1:884
+      - NACOS_USERNAME=nacos
+      - NACOS_PASSWORD=nacos
+      - JAVA_OPTS="-server -XX:+UseG1GC -XX:G1HeapRegionSize=8 -XX:MaxGCPauseMillis=500 -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:+UseStringDeduplication -XX:+UseContainerSupport -Xms1g -Xmx3g -XX:MetaspaceSize=128m"
+      - SERVER_TYPE="tomcat"
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./logs:/bubua12/logs  # 可以将日志输出到主机的 ./logs 目录
+    restart: always  # 设置容器的自动重启策略
