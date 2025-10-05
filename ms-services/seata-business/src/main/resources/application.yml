@@ -3,9 +3,9 @@ spring:
     name: seata-business
   cloud:
     nacos:
-      server-addr: 192.168.1.242:8848
-      username: nacos
-      password: nacos
+      server-addr: ${NACOS_URL:http://127.0.0.1:8848}
+      username: ${NACOS_USERNAME:nacos}
+      password: ${NACOS_PASSWORD:nacos}
       config:
         import-check:
           enabled: false

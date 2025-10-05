@@ -11,8 +11,6 @@
 ![Gateway](https://img.shields.io/badge/Spring%20Cloud%20Gateway-网关-yellowgreen)
 ![OpenTelemetry](https://img.shields.io/badge/OpenTelemetry-链路追踪-purple)
 ![Docker](https://img.shields.io/badge/Docker-容器化-blue)
-![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey)
-![License](https://img.shields.io/badge/License-MIT-green)
 
 *基于 Spring Cloud 2025 的现代化微服务架构学习项目*
 

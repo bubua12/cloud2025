@@ -2,15 +2,15 @@ spring:
   application:
     name: seata-storage
   datasource:
-    url: jdbc:mysql://192.168.1.242:3306/storage_db?useUnicode=true&characterEncoding=utf-8&useSSL=false&logger=Slf4JLogger&profileSQL=true
+    url: jdbc:mysql://192.168.31.127:3306/storage_db?useUnicode=true&characterEncoding=utf-8&useSSL=false&logger=Slf4JLogger&profileSQL=true
     username: root
     password: bubua12
     driver-class-name: com.mysql.cj.jdbc.Driver
   cloud:
     nacos:
-      server-addr: 192.168.1.242:8848
-      username: nacos
-      password: nacos
+      server-addr: ${NACOS_URL:http://127.0.0.1:8848}
+      username: ${NACOS_USERNAME:nacos}
+      password: ${NACOS_PASSWORD:nacos}
       config:
         import-check:
           enabled: false
