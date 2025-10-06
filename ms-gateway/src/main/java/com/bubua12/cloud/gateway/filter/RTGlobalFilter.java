@@ -50,7 +50,7 @@ public class RTGlobalFilter implements GlobalFilter, Ordered {
                             exchange.getResponse().getHeaders()
                                     .add("traceId", traceId);
 
-                            log.info("请求 {} 结束， traceId: {}, 时间：{}，耗时: {} ms", request.getURI(), traceId, LocalDateTime.now(), duration);
+                            log.info("请求 {} 结束， traceId: {}, 时间：{}，耗时: {}", request.getURI(), traceId, LocalDateTime.now(), duration);
                         }
                 );
     }
